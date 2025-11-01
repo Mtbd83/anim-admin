@@ -13,7 +13,7 @@ export const auth = betterAuth({
   baseURL,
   secret: env.BETTER_AUTH_SECRET,
   database: drizzleAdapter(db, {
-    provider: "sqlite",
+    provider: "pg",
     schema,
     usePlural: true,
     camelCase: true,

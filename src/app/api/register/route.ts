@@ -132,7 +132,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (invitation.expiresAt <= Date.now()) {
+    if (
+      invitation.expiresAt &&
+      invitation.expiresAt.getTime() <= Date.now()
+    ) {
       return NextResponse.json(
         { error: "Invitation has expired" },
         { status: 410 },
@@ -187,7 +190,7 @@ export async function POST(req: NextRequest) {
           .set({
             status: "accepted",
             invitedUserId: createdUser.id,
-            updatedAt: Date.now(),
+            updatedAt: new Date(),
           })
           .where(eq(organizationInvitations.id, invitation!.id));
 
