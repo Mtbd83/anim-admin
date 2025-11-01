@@ -2,22 +2,22 @@ import Link from "next/link";
 
 const features = [
   {
-    icon: "compass" as const,
-    title: "Onboarding guid?",
+    icon: "paw" as const,
+    title: "Suivi des animaux recueillis",
     description:
-      "Un parcours ?tape par ?tape qui accompagne votre organisation depuis la cr?ation du compte jusqu'? la mise en service.",
+      "Centralisez les fiches d'accueil, les soins v\u00E9t\u00E9rinaires et les d\u00E9marches d'adoption pour chaque prot\u00E9g\u00E9.",
   },
   {
     icon: "shield" as const,
-    title: "Donn?es s?curis?es",
+    title: "Protection des donn\u00E9es",
     description:
-      "Une plateforme chiffr?e et conforme aux normes d'accessibilit? pour prot?ger les informations sensibles de vos ?quipes.",
+      "Des autorisations fines et un h\u00E9bergement s\u00E9curis\u00E9 en Europe pour respecter les adh\u00E9rents et les adoptants.",
   },
   {
-    icon: "leaf" as const,
-    title: "Exp?rience inclusive",
+    icon: "compass" as const,
+    title: "Organisation des b\u00E9n\u00E9voles",
     description:
-      "Interfaces contrast?es, navigation clavier et contenus en lecture facile pour que chacun se sente accueilli.",
+      "Planifiez les tourn\u00E9es de sauvetage, les permanences de refuge et les \u00E9v\u00E9nements de sensibilisation en quelques clics.",
   },
 ];
 
@@ -25,6 +25,28 @@ type FeatureIconName = (typeof features)[number]["icon"];
 
 function FeatureIcon({ name }: { name: FeatureIconName }) {
   switch (name) {
+    case "paw":
+      return (
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          className="h-6 w-6 text-emerald-900"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        >
+          <circle cx="8.25" cy="9" r="2.1" fill="currentColor" opacity="0.9" />
+          <circle cx="15.75" cy="9" r="2.1" fill="currentColor" opacity="0.9" />
+          <circle cx="6.75" cy="6" r="1.45" fill="currentColor" opacity="0.75" />
+          <circle cx="17.25" cy="6" r="1.45" fill="currentColor" opacity="0.75" />
+          <path
+            d="M12 11.75c-2.9 0-5.25 2.15-5.25 5.25 1.65 1.15 3.45 1.75 5.25 1.75s3.6-.6 5.25-1.75c0-3.1-2.35-5.25-5.25-5.25Z"
+            fill="currentColor"
+            opacity="0.85"
+          />
+        </svg>
+      );
     case "compass":
       return (
         <svg
@@ -114,19 +136,19 @@ export default function Home() {
       <header className="relative z-10 mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-8 sm:px-10">
         <div className="flex items-center gap-3">
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-600 text-lg font-semibold text-white">
-            ??
+            AA
           </div>
           <div>
-            <p className="text-base font-semibold text-emerald-900">VerteVoix</p>
-            <p className="text-sm text-emerald-900/70">Plateforme inclusive pour vos communaut?s</p>
+            <p className="text-base font-semibold text-emerald-900">AnimAdmin</p>
+            <p className="text-sm text-emerald-900/70">Pilotage des associations de protection animale</p>
           </div>
         </div>
         <nav aria-label="Navigation principale" className="hidden items-center gap-6 text-sm font-medium text-emerald-950 md:flex">
-          <Link href="#features" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
-            Fonctionnalit?s
+          <Link href="#solutions" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
+            Fonctionnalit\u00E9s
           </Link>
-          <Link href="#engagement" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
-            Engagement
+          <Link href="#impact" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
+            Impact
           </Link>
           <Link href="/login" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
             Se connecter
@@ -138,23 +160,23 @@ export default function Home() {
         <section className="max-w-3xl" aria-labelledby="hero-title">
           <p className="mb-6 inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1 text-sm font-semibold text-emerald-900 shadow-sm">
             <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true" />
-            Plateforme pens?e pour une confiance durable
+            Pens\u00E9 avec des refuges et sanctuaires partenaires
           </p>
           <h1
             id="hero-title"
-            className="text-4xl font-semibold tracking-tight text-emerald-950 sm:text-5xl"
+            className="text-4xl font-semibold leading-tight tracking-tight text-emerald-950 sm:text-5xl lg:text-6xl"
           >
-            Construisez une organisation sereine et accessible pour toutes les personnes qui vous rejoignent.
+            Administrez votre association de protection animale en toute s\u00E9r\u00E9nit\u00E9.
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-slate-700 sm:text-xl">
-            VerteVoix simplifie la mise en place de votre espace collaboratif. Nous combinons un design nature apaisant, une navigation accessible et des outils fiables pour que chacun puisse contribuer en toute confiance.
+            AnimAdmin centralise vos sauvetages, vos familles d'accueil et vos campagnes de dons. Une interface accessible qui lib\u00E8re du temps pour ce qui compte : le bien-\u00EAtre des animaux et l'accompagnement des b\u00E9n\u00E9voles.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <Link
-              href="/setup"
-              className="inline-flex items-center justify-center rounded-full bg-emerald-700 px-8 py-3 text-base font-semibold text-white shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2 transition-colors hover:bg-emerald-800"
+              href="/demo"
+              className="inline-flex items-center justify-center rounded-full bg-emerald-700 px-8 py-3 text-base font-semibold text-white shadow transition-colors hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2"
             >
-              Cr?er mon compte
+              Demander une d\u00E9mo
             </Link>
             <Link
               href="/login"
@@ -165,30 +187,30 @@ export default function Home() {
           </div>
           <dl className="mt-10 grid gap-6 sm:grid-cols-3">
             <div className="rounded-2xl bg-white/80 p-4 shadow-sm backdrop-blur">
-              <dt className="text-sm text-emerald-900/70">Temps moyen de mise en route</dt>
-              <dd className="mt-1 text-2xl font-semibold text-emerald-950">48 heures</dd>
+              <dt className="text-sm text-emerald-900/70">Animaux suivis / mois</dt>
+              <dd className="mt-1 text-2xl font-semibold text-emerald-950">320+</dd>
             </div>
             <div className="rounded-2xl bg-white/80 p-4 shadow-sm backdrop-blur">
-              <dt className="text-sm text-emerald-900/70">Satisfaction des membres</dt>
-              <dd className="mt-1 text-2xl font-semibold text-emerald-950">96 %</dd>
+              <dt className="text-sm text-emerald-900/70">B\u00E9n\u00E9voles coordonn\u00E9s</dt>
+              <dd className="mt-1 text-2xl font-semibold text-emerald-950">150+</dd>
             </div>
             <div className="rounded-2xl bg-white/80 p-4 shadow-sm backdrop-blur">
-              <dt className="text-sm text-emerald-900/70">Accessibilit? v?rifi?e</dt>
-              <dd className="mt-1 text-2xl font-semibold text-emerald-950">WCAG 2.1 AA</dd>
+              <dt className="text-sm text-emerald-900/70">Temps gagn\u00E9 / semaine</dt>
+              <dd className="mt-1 text-2xl font-semibold text-emerald-950">12 h</dd>
             </div>
           </dl>
         </section>
 
-        <section id="features" aria-labelledby="features-title" className="rounded-3xl bg-white/80 px-6 py-10 shadow-lg backdrop-blur sm:px-10">
+        <section id="solutions" aria-labelledby="features-title" className="rounded-3xl bg-white/80 px-6 py-10 shadow-lg backdrop-blur sm:px-10">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">Fonctionnalit?s cl?s</p>
+              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">Fonctionnalit\u00E9s cl\u00E9s</p>
               <h2 id="features-title" className="mt-2 text-3xl font-semibold text-emerald-950">
-                Des outils pens?s pour l'humain et la nature
+                Des outils pens\u00E9s pour vos prot\u00E9g\u00E9s et vos \u00E9quipes
               </h2>
             </div>
             <p className="max-w-md text-sm text-slate-700">
-              Chaque fonctionnalit? est test?e avec des personnes en situation de handicap et s'adapte ? votre organisation, quelle que soit sa taille.
+              AnimAdmin r\u00E9unit le suivi des animaux, la gestion des b\u00E9n\u00E9voles et la collecte de dons pour faire grandir votre association sans perdre en rigueur.
             </p>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -204,41 +226,41 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="engagement" aria-labelledby="engagement-title" className="rounded-3xl bg-emerald-900 px-6 py-12 text-emerald-50 shadow-xl sm:px-10">
+        <section id="impact" aria-labelledby="engagement-title" className="rounded-3xl bg-emerald-900 px-6 py-12 text-emerald-50 shadow-xl sm:px-10">
           <div className="grid gap-8 lg:grid-cols-[2fr,1fr] lg:items-center">
             <div>
-              <h2 id="engagement-title" className="text-3xl font-semibold">Notre engagement accessibilit?</h2>
+              <h2 id="engagement-title" className="text-3xl font-semibold">Notre engagement bien-\u00EAtre animal</h2>
               <p className="mt-4 text-base leading-relaxed text-emerald-100">
-                Nous co-construisons VerteVoix avec des associations expertes en inclusion. Audit r?gulier, contrastes rigoureux, transcriptions syst?matiques : nous ne laissons personne de c?t?.
+                AnimAdmin est co-construit avec des refuges partenaires. Nous privil\u00E9gions la transparence, la tra\u00E7abilit\u00E9 des soins et l'accessibilit\u00E9 num\u00E9rique pour soutenir chaque membre de votre association.
               </p>
               <ul className="mt-6 space-y-3 text-sm">
                 <li className="flex items-start gap-3">
                   <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-xs font-bold text-white">
-                    ?
+                    1
                   </span>
-                  Tests utilisateurs trimestriels avec lecteurs d'?cran et navigation clavier.
+                  Tableaux de bord d\u00E9di\u00E9s aux soins, adoptions, suivis v\u00E9t\u00E9rinaires et contrats de familles d'accueil.
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-xs font-bold text-white">
-                    ?
+                    2
                   </span>
-                  Contenus pr?ts ? l'emploi pour sensibiliser vos ?quipes ? l'accessibilit?.
+                  Parcours d'entr\u00E9e pour vos b\u00E9n\u00E9voles avec rappels automatis\u00E9s de formation et de planning.
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-xs font-bold text-white">
-                    ?
+                    3
                   </span>
-                  Support humain disponible par chat, e-mail ou t?l?phone avec r?ponses en langage clair.
+                  Support humain en 24 h et base de connaissances d\u00E9di\u00E9e aux obligations l\u00E9gales des associations animales.
                 </li>
               </ul>
             </div>
             <aside className="rounded-2xl bg-emerald-800/60 p-6 shadow-lg">
-              <p className="text-sm uppercase tracking-wide text-emerald-200">?tude de cas</p>
+              <p className="text-sm uppercase tracking-wide text-emerald-200">\u00C9tude de cas</p>
               <p className="mt-3 text-lg font-semibold text-white">
-                ? Gr?ce ? VerteVoix, nous avons accueilli 35 nouveaux b?n?voles en douceur, sans jamais sacrifier l'accessibilit?. ?
+                \u00AB Gr\u00E2ce \u00E0 AnimAdmin, nous suivons 280 animaux en simultan\u00E9 et chaque adoption reste transparente pour nos donateurs. \u00BB
               </p>
               <p className="mt-4 text-sm text-emerald-100">
-                Am?lie, coordinatrice d'une association environnementale.
+                L\u00E9a, pr\u00E9sidente de l'association Sauvetage F\u00E9lins Bretagne.
               </p>
             </aside>
           </div>
@@ -247,13 +269,13 @@ export default function Home() {
 
       <footer className="relative z-10 border-t border-emerald-200/60 bg-white/80 px-6 py-6 text-sm text-slate-600 backdrop-blur sm:px-10">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p>? {new Date().getFullYear()} VerteVoix. Tous droits r?serv?s.</p>
+          <p>{"\u00A9"} {new Date().getFullYear()} AnimAdmin. Tous droits r\u00E9serv\u00E9s.</p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link href="/accessibilite" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
-              D?claration d'accessibilit?
+              D\u00E9claration d'accessibilit\u00E9
             </Link>
             <Link href="/confidentialite" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
-              Confidentialit?
+              Confidentialit\u00E9
             </Link>
             <Link href="/contact" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
               Contact
