@@ -1,10 +1,9 @@
 import { betterAuth } from "better-auth";
-import { drizzleAdapter } from "better-auth/adapters/drizzle-adapter";
-import { nextCookies, toNextJsHandler } from "better-auth/integrations/next-js";
-
+import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { env } from "@/env";
 import { db } from "@/db/client";
 import * as schema from "@/db/schema";
+import { nextCookies, toNextJsHandler } from "better-auth/next-js";
 
 const baseURL =
   env.BETTER_AUTH_URL ?? process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";

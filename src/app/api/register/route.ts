@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { randomUUID } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 
 import { and, eq } from "drizzle-orm";
 import { z } from "zod";
@@ -15,17 +15,23 @@ import {
   organizations,
   sessions,
   users,
+  verifications,
 } from "@/db/schema";
 import { generateCandidateSlug } from "@/lib/utils/slug";
+import { sendVerificationEmail } from "@/lib/email";
 
 const registerSchema = z
   .object({
-    name: z.string().min(1).max(255),
+    firstName: z.string().min(1).max(120),
+    lastName: z.string().min(1).max(120),
     email: z.string().email(),
     password: z.string().min(8).max(128),
     organizationName: z.string().min(1).max(255).optional(),
     organizationSlug: z.string().min(1).max(255).optional(),
-    organizationDescription: z.string().max(1000).optional(),
+    organizationType: z.string().max(255).optional(),
+    organizationCity: z.string().max(255).optional(),
+    organizationEmail: z.string().email().optional(),
+    registrationNumber: z.string().max(255).optional(),
     invitationToken: z.string().min(1).optional(),
     rememberMe: z.boolean().optional(),
   })
@@ -48,6 +54,39 @@ const registerSchema = z
       });
     }
   });
+
+const VERIFICATION_EXPIRATION_MINUTES = 15;
+
+function buildOrganizationDescription({
+  organizationType,
+  organizationCity,
+  organizationEmail,
+  registrationNumber,
+}: {
+  organizationType?: string;
+  organizationCity?: string;
+  organizationEmail?: string;
+  registrationNumber?: string;
+}) {
+  const segments: string[] = [];
+  if (organizationType) {
+    segments.push(`Type : ${organizationType}`);
+  }
+  if (organizationCity) {
+    segments.push(`Ville : ${organizationCity}`);
+  }
+  if (organizationEmail) {
+    segments.push(`Contact : ${organizationEmail}`);
+  }
+  if (registrationNumber) {
+    segments.push(`Référence : ${registrationNumber}`);
+  }
+  return segments.length > 0 ? segments.join(" \u2022 ") : undefined;
+}
+
+function generateVerificationCode() {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+}
 
 async function ensureUniqueOrganizationSlug(baseCandidate: string) {
   const base = generateCandidateSlug(baseCandidate);
@@ -93,17 +132,28 @@ export async function POST(req: NextRequest) {
   }
 
   const {
-    name,
+    firstName,
+    lastName,
     email: rawEmail,
     password,
     organizationName,
     organizationSlug,
-    organizationDescription,
+    organizationType,
+    organizationCity,
+    organizationEmail,
+    registrationNumber,
     invitationToken,
     rememberMe = false,
   } = parsed.data;
 
   const email = rawEmail.trim().toLowerCase();
+  const displayName = `${firstName} ${lastName}`.trim();
+  const composedDescription = buildOrganizationDescription({
+    organizationType,
+    organizationCity,
+    organizationEmail,
+    registrationNumber,
+  });
 
   let invitation: (typeof organizationInvitations.$inferSelect) | null = null;
   if (invitationToken) {
@@ -146,7 +196,7 @@ export async function POST(req: NextRequest) {
   const signUpResponse = await auth.api.signUpEmail({
     asResponse: true,
     body: {
-      name,
+      name: displayName,
       email,
       password,
       rememberMe,
@@ -228,7 +278,7 @@ export async function POST(req: NextRequest) {
           id: organizationId,
           name: organizationName!,
           slug: finalSlug,
-          description: organizationDescription,
+          description: composedDescription,
           createdByUserId: createdUser.id,
         });
 
@@ -246,6 +296,37 @@ export async function POST(req: NextRequest) {
     console.error("Failed to finalize registration", error);
     return NextResponse.json(
       { error: "Failed to finalize registration" },
+      { status: 500 },
+    );
+  }
+
+  const verificationCode = generateVerificationCode();
+  const identifier = `email-verify:${createdUser.id}`;
+  const hashedCode = createHash("sha256").update(verificationCode).digest("hex");
+  const expiresAt = new Date(Date.now() + VERIFICATION_EXPIRATION_MINUTES * 60 * 1000);
+
+  await db
+    .delete(verifications)
+    .where(eq(verifications.identifier, identifier))
+    .catch(() => undefined);
+
+  await db.insert(verifications).values({
+    identifier,
+    value: hashedCode,
+    expiresAt,
+  });
+
+  try {
+    await sendVerificationEmail({
+      to: email,
+      code: verificationCode,
+      firstName,
+    });
+  } catch (error) {
+    await cleanupUser(createdUser.id).catch(() => undefined);
+    console.error("Failed to send verification email", error);
+    return NextResponse.json(
+      { error: "Unable to send verification email. Please try again later." },
       { status: 500 },
     );
   }
@@ -269,6 +350,10 @@ export async function POST(req: NextRequest) {
     {
       user: createdUser,
       organization: organizationRecord,
+      verification: {
+        required: true,
+        expiresAt,
+      },
       invitation: invitation
         ? {
             id: invitation.id,

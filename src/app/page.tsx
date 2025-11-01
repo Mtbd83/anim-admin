@@ -1,283 +1,322 @@
 import Link from "next/link";
 
-const features = [
+const featureHighlights = [
   {
-    icon: "paw" as const,
-    title: "Suivi des animaux recueillis",
-    description:
-      "Centralisez les fiches d'accueil, les soins v\u00E9t\u00E9rinaires et les d\u00E9marches d'adoption pour chaque prot\u00E9g\u00E9.",
+    icon: "🐈",
+    title: "Suivi émotionnel",
+    description: "Notes, photos, soins et humeurs partagées en direct avec toute l'équipe.",
   },
   {
-    icon: "shield" as const,
-    title: "Protection des donn\u00E9es",
-    description:
-      "Des autorisations fines et un h\u00E9bergement s\u00E9curis\u00E9 en Europe pour respecter les adh\u00E9rents et les adoptants.",
+    icon: "🐕",
+    title: "Familles rassurées",
+    description: "Protocoles prêts, rappels doux et conversations centralisées pour les familles d'accueil.",
   },
   {
-    icon: "compass" as const,
-    title: "Organisation des b\u00E9n\u00E9voles",
-    description:
-      "Planifiez les tourn\u00E9es de sauvetage, les permanences de refuge et les \u00E9v\u00E9nements de sensibilisation en quelques clics.",
+    icon: "🩺",
+    title: "Budget vétérinaire maîtrisé",
+    description: "Factures, remboursements et plafonds suivis sans tableur.",
   },
 ];
 
-type FeatureIconName = (typeof features)[number]["icon"];
+const communityVoices = [
+  {
+    name: "Léa",
+    role: "Refuge Les Poilus Heureux",
+    quote:
+      "On se concentre à nouveau sur les câlins. AnimAdmin nous rappelle les vaccins et partage les nouvelles aux bénévoles automatiquement.",
+  },
+  {
+    name: "Samir",
+    role: "Collectif Patte sur le cœur",
+    quote:
+      "Plus besoin de jongler entre huit conversations. Les familles d'accueil reçoivent leurs consignes et on voit qui est disponible en un clin d'œil.",
+  },
+  {
+    name: "Anaïs",
+    role: "Association Chiens du Soleil",
+    quote:
+      "Les donateurs reçoivent des histoires lumineuses sans effort. On a réduit notre temps administratif de moitié.",
+  },
+];
 
-function FeatureIcon({ name }: { name: FeatureIconName }) {
-  switch (name) {
-    case "paw":
-      return (
-        <svg
-          aria-hidden="true"
-          focusable="false"
-          className="h-6 w-6 text-emerald-900"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        >
-          <circle cx="8.25" cy="9" r="2.1" fill="currentColor" opacity="0.9" />
-          <circle cx="15.75" cy="9" r="2.1" fill="currentColor" opacity="0.9" />
-          <circle cx="6.75" cy="6" r="1.45" fill="currentColor" opacity="0.75" />
-          <circle cx="17.25" cy="6" r="1.45" fill="currentColor" opacity="0.75" />
-          <path
-            d="M12 11.75c-2.9 0-5.25 2.15-5.25 5.25 1.65 1.15 3.45 1.75 5.25 1.75s3.6-.6 5.25-1.75c0-3.1-2.35-5.25-5.25-5.25Z"
-            fill="currentColor"
-            opacity="0.85"
-          />
-        </svg>
-      );
-    case "compass":
-      return (
-        <svg
-          aria-hidden="true"
-          focusable="false"
-          className="h-6 w-6 text-emerald-900"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        >
-          <circle cx="12" cy="12" r="9" opacity="0.25" fill="currentColor" />
-          <path
-            d="M9.75 9.75 14.25 9 14 14.25 9.75 14.5 9.75 9.75Z"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <circle cx="12" cy="12" r="1.25" fill="currentColor" />
-        </svg>
-      );
-    case "shield":
-      return (
-        <svg
-          aria-hidden="true"
-          focusable="false"
-          className="h-6 w-6 text-emerald-900"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        >
-          <path
-            d="M12 3.75 6 6v6c0 4.28 2.25 6.75 6 8.25 3.75-1.5 6-3.97 6-8.25V6l-6-2.25Z"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path d="M9.75 12.75 11.25 14.25 14.25 10.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      );
-    case "leaf":
-      return (
-        <svg
-          aria-hidden="true"
-          focusable="false"
-          className="h-6 w-6 text-emerald-900"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        >
-          <path
-            d="M20.25 3.75c-4.5 0-9 1.5-12.75 5.25s-5.25 8.25-5.25 12.75c4.5 0 9-1.5 12.75-5.25S20.25 8.25 20.25 3.75Z"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path d="M3.75 20.25 9 15" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      );
-    default:
-      return null;
-  }
-}
+const dailyToolkit = [
+  {
+    icon: "📋",
+    title: "Registre express",
+    detail: "Entrées et sorties d'animaux générées automatiquement et conformes aux contrôles.",
+  },
+  {
+    icon: "🧾",
+    title: "Compta simplifiée",
+    detail: "Dépenses, reçus fiscaux, bilans pour l'AG prêts à être envoyés.",
+  },
+  {
+    icon: "📢",
+    title: "Annonces vivantes",
+    detail: "Présentez vos protégés avec des modèles chaleureux et partageables en un clic.",
+  },
+  {
+    icon: "🤗",
+    title: "Accompagnement humain",
+    detail: "Onboardings en visio, bibliothèque de ressources et réponses en moins de 24 h.",
+  },
+];
+
+const adoptionStories = [
+  {
+    name: "Nougat",
+    species: "chaton gaffeur",
+    status: "Adopté dimanche",
+    note: "Polaroid, contrat et kit de départ envoyés automatiquement à sa nouvelle famille.",
+  },
+  {
+    name: "Mango",
+    species: "chiot timide",
+    status: "En famille d'accueil",
+    note: "Checklist du vétérinaire partagée, rappels de traitement programmés.",
+  },
+  {
+    name: "Lila",
+    species: "lapine curieuse",
+    status: "Annonce en cours",
+    note: "Portrait lumineux publié, 5 candidatures suivies dans AnimAdmin.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-emerald-50 via-white to-emerald-100 text-slate-900">
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute left-[-8rem] top-[-6rem] hidden h-80 w-80 rounded-full bg-emerald-200/40 blur-3xl sm:block"
-      />
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute right-[-6rem] top-1/3 hidden h-72 w-72 rounded-full bg-teal-200/30 blur-3xl md:block"
-      />
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-[-4rem] left-1/4 hidden h-64 w-64 rounded-full bg-lime-200/25 blur-3xl lg:block"
-      />
-
+    <div className="min-h-screen bg-[#fff9f3] text-slate-900">
       <a
         href="#main-content"
-        className="absolute left-4 top-4 -translate-y-full rounded-full bg-emerald-800 px-4 py-2 text-sm font-semibold text-white shadow focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:ring-offset-2"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-6 focus:top-6 focus:rounded-full focus:bg-orange-500 focus:px-4 focus:py-2 focus:text-white"
       >
         Passer au contenu principal
       </a>
 
-      <header className="relative z-10 mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-8 sm:px-10">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-600 text-lg font-semibold text-white">
-            AA
-          </div>
-          <div>
-            <p className="text-base font-semibold text-emerald-900">AnimAdmin</p>
-            <p className="text-sm text-emerald-900/70">Pilotage des associations de protection animale</p>
-          </div>
-        </div>
-        <nav aria-label="Navigation principale" className="hidden items-center gap-6 text-sm font-medium text-emerald-950 md:flex">
-          <Link href="#solutions" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
-            Fonctionnalit\u00E9s
+      <header className="sticky top-0 z-40 border-b border-orange-100/70 bg-white/80 backdrop-blur">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-5 sm:px-10">
+          <Link href="/" className="flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2">
+            <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-orange-500 text-lg font-semibold text-white shadow-lg">
+              🐾
+            </span>
+            <span>
+              <span className="block text-lg font-semibold text-slate-900">AnimAdmin</span>
+              <span className="block text-sm text-slate-500">Le copilote des refuges heureux</span>
+            </span>
           </Link>
-          <Link href="#impact" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
-            Impact
-          </Link>
-          <Link href="/login" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
-            Se connecter
-          </Link>
-        </nav>
-      </header>
-
-      <main id="main-content" className="relative z-10 mx-auto flex w-full max-w-5xl flex-col gap-24 px-6 pb-20 pt-10 sm:px-10 sm:pt-16">
-        <section className="max-w-3xl" aria-labelledby="hero-title">
-          <p className="mb-6 inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1 text-sm font-semibold text-emerald-900 shadow-sm">
-            <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true" />
-            Pens\u00E9 avec des refuges et sanctuaires partenaires
-          </p>
-          <h1
-            id="hero-title"
-            className="text-4xl font-semibold leading-tight tracking-tight text-emerald-950 sm:text-5xl lg:text-6xl"
-          >
-            Administrez votre association de protection animale en toute s\u00E9r\u00E9nit\u00E9.
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-slate-700 sm:text-xl">
-            AnimAdmin centralise vos sauvetages, vos familles d'accueil et vos campagnes de dons. Une interface accessible qui lib\u00E8re du temps pour ce qui compte : le bien-\u00EAtre des animaux et l'accompagnement des b\u00E9n\u00E9voles.
-          </p>
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-            <Link
-              href="/demo"
-              className="inline-flex items-center justify-center rounded-full bg-emerald-700 px-8 py-3 text-base font-semibold text-white shadow transition-colors hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2"
-            >
-              Demander une d\u00E9mo
+          <nav className="hidden items-center gap-4 text-sm font-medium text-slate-600 md:flex">
+            <Link href="#fonctionnalites" className="rounded-full px-4 py-2 transition-colors hover:bg-orange-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2">
+              Fonctionnalités
             </Link>
+            <Link href="#voix" className="rounded-full px-4 py-2 transition-colors hover:bg-orange-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2">
+              Témoignages
+            </Link>
+            <Link href="#outils" className="rounded-full px-4 py-2 transition-colors hover:bg-orange-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2">
+              Outils du quotidien
+            </Link>
+          </nav>
+          <div className="flex items-center gap-3 text-sm font-semibold">
             <Link
               href="/login"
-              className="inline-flex items-center justify-center rounded-full border border-emerald-300 bg-white px-8 py-3 text-base font-semibold text-emerald-900 shadow-sm transition-colors hover:border-emerald-400 hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2"
+              className="rounded-full px-4 py-2 text-slate-600 transition-colors hover:text-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2"
             >
               Se connecter
             </Link>
+            <Link
+              href="/register"
+              className="inline-flex items-center justify-center rounded-full bg-orange-500 px-4 py-2 text-white shadow transition-transform hover:-translate-y-0.5 hover:bg-orange-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2"
+            >
+              Créer mon espace
+            </Link>
           </div>
-          <dl className="mt-10 grid gap-6 sm:grid-cols-3">
-            <div className="rounded-2xl bg-white/80 p-4 shadow-sm backdrop-blur">
-              <dt className="text-sm text-emerald-900/70">Animaux suivis / mois</dt>
-              <dd className="mt-1 text-2xl font-semibold text-emerald-950">320+</dd>
+        </div>
+      </header>
+
+      <main id="main-content" className="mx-auto flex w-full max-w-6xl flex-col gap-24 px-6 pb-24 pt-14 sm:px-10">
+        <section className="grid gap-12 overflow-hidden rounded-[2.75rem] border border-orange-100 bg-white/90 px-8 py-14 shadow-xl shadow-orange-200/50 backdrop-blur md:grid-cols-[1.1fr,0.9fr] md:px-12">
+          <div className="space-y-8">
+            <p className="inline-flex items-center gap-2 rounded-full bg-orange-100 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-orange-600">
+              <span aria-hidden="true">✨</span>
+              Refuges sereins, animaux choyés
+            </p>
+            <div className="space-y-5">
+              <h1 className="text-4xl font-bold leading-tight text-slate-900 sm:text-5xl">
+                Un refuge radieux pour chaque compagnon.
+              </h1>
+              <p className="text-lg text-slate-600 sm:text-xl">
+                AnimAdmin rassemble vos suivis, vos bénévoles et vos familles d'accueil dans une interface douce, pensée pour dégager du temps et offrir plus de présence aux animaux.
+              </p>
             </div>
-            <div className="rounded-2xl bg-white/80 p-4 shadow-sm backdrop-blur">
-              <dt className="text-sm text-emerald-900/70">B\u00E9n\u00E9voles coordonn\u00E9s</dt>
-              <dd className="mt-1 text-2xl font-semibold text-emerald-950">150+</dd>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/register"
+                className="inline-flex items-center justify-center rounded-full bg-orange-500 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-orange-300/50 transition-transform hover:-translate-y-0.5 hover:bg-orange-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2"
+              >
+                Démarrer gratuitement
+              </Link>
+              <Link
+                href="#voix"
+                className="inline-flex items-center justify-center rounded-full border border-orange-200 bg-white px-8 py-3 text-base font-semibold text-slate-700 shadow-sm transition-colors hover:border-orange-300 hover:bg-orange-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-200 focus-visible:ring-offset-2"
+              >
+                Découvrir les témoignages
+              </Link>
             </div>
-            <div className="rounded-2xl bg-white/80 p-4 shadow-sm backdrop-blur">
-              <dt className="text-sm text-emerald-900/70">Temps gagn\u00E9 / semaine</dt>
-              <dd className="mt-1 text-2xl font-semibold text-emerald-950">12 h</dd>
+            <dl className="grid gap-4 sm:grid-cols-3">
+              <div className="rounded-2xl border border-orange-100 bg-white/90 p-5 shadow-sm">
+                <dt className="text-xs uppercase tracking-wide text-orange-500">Protéges accompagnés</dt>
+                <dd className="mt-2 text-2xl font-semibold text-slate-900">520+</dd>
+                <p className="mt-1 text-xs text-slate-500">Chaque fiche reste vivante et partagée.</p>
+              </div>
+              <div className="rounded-2xl border border-orange-100 bg-white/90 p-5 shadow-sm">
+                <dt className="text-xs uppercase tracking-wide text-orange-500">Temps gagné / semaine</dt>
+                <dd className="mt-2 text-2xl font-semibold text-slate-900">16 h</dd>
+                <p className="mt-1 text-xs text-slate-500">Moins d'administratif, plus de câlins.</p>
+              </div>
+              <div className="rounded-2xl border border-orange-100 bg-white/90 p-5 shadow-sm">
+                <dt className="text-xs uppercase tracking-wide text-orange-500">Familles rassurées</dt>
+                <dd className="mt-2 text-2xl font-semibold text-slate-900">98%</dd>
+                <p className="mt-1 text-xs text-slate-500">Des informations claires et des rappels doux.</p>
+              </div>
+            </dl>
+          </div>
+          <div className="relative flex items-center justify-center">
+            <div className="absolute -top-10 right-6 h-28 w-28 rounded-full bg-rose-200/60 blur-3xl" aria-hidden="true" />
+            <div className="absolute -bottom-12 left-6 h-32 w-32 rounded-full bg-sky-200/60 blur-3xl" aria-hidden="true" />
+            <div className="relative w-full max-w-[420px] space-y-4 rounded-3xl border border-orange-100 bg-white p-6 shadow-2xl shadow-orange-200/80">
+              {adoptionStories.map((story) => (
+                <article key={story.name} className="flex items-start gap-4 rounded-2xl border border-orange-100/70 bg-orange-50/60 px-4 py-4 text-sm text-slate-700">
+                  <span className="mt-1 flex h-10 w-10 items-center justify-center rounded-full bg-white text-lg">
+                    {story.name === "Lila" ? "🐇" : story.name === "Mango" ? "🐕" : "🐈"}
+                  </span>
+                  <div>
+                    <p className="font-semibold text-slate-900">
+                      {story.name} <span className="text-xs text-slate-500">· {story.species}</span>
+                    </p>
+                    <p className="text-xs font-medium text-orange-600">{story.status}</p>
+                    <p className="mt-1 text-xs leading-relaxed">{story.note}</p>
+                  </div>
+                </article>
+              ))}
+              <div className="rounded-2xl bg-slate-900 px-4 py-3 text-xs text-white">
+                <p className="font-semibold">Registre conforme</p>
+                <p className="text-[11px] text-slate-100/80">Entrées / sorties à jour · Contrôle prêt ✅</p>
+              </div>
             </div>
-          </dl>
+          </div>
         </section>
 
-        <section id="solutions" aria-labelledby="features-title" className="rounded-3xl bg-white/80 px-6 py-10 shadow-lg backdrop-blur sm:px-10">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">Fonctionnalit\u00E9s cl\u00E9s</p>
-              <h2 id="features-title" className="mt-2 text-3xl font-semibold text-emerald-950">
-                Des outils pens\u00E9s pour vos prot\u00E9g\u00E9s et vos \u00E9quipes
-              </h2>
-            </div>
-            <p className="max-w-md text-sm text-slate-700">
-              AnimAdmin r\u00E9unit le suivi des animaux, la gestion des b\u00E9n\u00E9voles et la collecte de dons pour faire grandir votre association sans perdre en rigueur.
+        <section id="fonctionnalites" className="space-y-10">
+          <header className="space-y-3">
+            <h2 className="text-3xl font-semibold text-slate-900">Ce que fait AnimAdmin pour vous</h2>
+            <p className="max-w-3xl text-base text-slate-600">
+              Des fonctionnalités pensées avec des soigneurs, des coordinateurs et des familles d'accueil pour accompagner chaque instant de vie au refuge.
             </p>
-          </div>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {features.map((feature) => (
-              <article key={feature.title} className="flex flex-col gap-4 rounded-2xl border border-emerald-200/60 bg-white p-6 shadow-sm transition hover:border-emerald-300 hover:shadow-md focus-within:border-emerald-400">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100">
-                  <FeatureIcon name={feature.icon} />
-                </div>
-                <h3 className="text-xl font-semibold text-emerald-950">{feature.title}</h3>
-                <p className="text-sm leading-relaxed text-slate-700">{feature.description}</p>
+          </header>
+          <div className="grid gap-6 md:grid-cols-3">
+            {featureHighlights.map((item) => (
+              <article key={item.title} className="flex h-full flex-col gap-3 rounded-3xl border border-orange-100 bg-white p-6 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md">
+                <span aria-hidden="true" className="text-2xl">
+                  {item.icon}
+                </span>
+                <h3 className="text-lg font-semibold text-slate-900">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-slate-600">{item.description}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section id="impact" aria-labelledby="engagement-title" className="rounded-3xl bg-emerald-900 px-6 py-12 text-emerald-50 shadow-xl sm:px-10">
-          <div className="grid gap-8 lg:grid-cols-[2fr,1fr] lg:items-center">
-            <div>
-              <h2 id="engagement-title" className="text-3xl font-semibold">Notre engagement bien-\u00EAtre animal</h2>
-              <p className="mt-4 text-base leading-relaxed text-emerald-100">
-                AnimAdmin est co-construit avec des refuges partenaires. Nous privil\u00E9gions la transparence, la tra\u00E7abilit\u00E9 des soins et l'accessibilit\u00E9 num\u00E9rique pour soutenir chaque membre de votre association.
+        <section id="voix" className="space-y-10 rounded-[2.75rem] border border-rose-100 bg-rose-50/60 px-6 py-12 shadow-inner sm:px-10">
+          <header className="space-y-2 text-center">
+            <p className="text-xs font-semibold uppercase tracking-wide text-rose-500">Voix du terrain</p>
+            <h2 className="text-3xl font-semibold text-slate-900">Ils respirent enfin et ça se voit</h2>
+          </header>
+          <div className="grid gap-6 md:grid-cols-3">
+            {communityVoices.map((voice) => (
+              <figure key={voice.name} className="flex h-full flex-col gap-3 rounded-3xl border border-rose-200 bg-white p-6 text-left shadow-sm">
+                <p className="text-sm leading-relaxed text-slate-600">“{voice.quote}”</p>
+                <figcaption className="mt-auto text-sm">
+                  <p className="font-semibold text-slate-900">{voice.name}</p>
+                  <p className="text-xs text-slate-500">{voice.role}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+
+        <section id="outils" className="space-y-10">
+          <header className="space-y-2">
+            <h2 className="text-3xl font-semibold text-slate-900">Votre boîte à outils préférée</h2>
+            <p className="max-w-3xl text-base text-slate-600">
+              Tout est prêt pour gagner du temps, garder la trace et choyer vos protégés.
+            </p>
+          </header>
+          <div className="grid gap-6 md:grid-cols-2">
+            {dailyToolkit.map((tool) => (
+              <article key={tool.title} className="flex h-full flex-col gap-3 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                <span aria-hidden="true" className="text-2xl">
+                  {tool.icon}
+                </span>
+                <h3 className="text-lg font-semibold text-slate-900">{tool.title}</h3>
+                <p className="text-sm leading-relaxed text-slate-600">{tool.detail}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="overflow-hidden rounded-[2.75rem] border border-sky-100 bg-gradient-to-br from-sky-100 via-white to-purple-100 px-8 py-14 shadow-xl sm:px-12">
+          <div className="grid gap-10 lg:grid-cols-[1.3fr,0.7fr] lg:items-center">
+            <div className="space-y-4">
+              <h2 className="text-3xl font-semibold text-slate-900">Besoin de souffler ? On s'occupe de l'installation.</h2>
+              <p className="text-base text-slate-600">
+                Import de vos tableurs, formation de votre équipe et configuration des rappels : tout est guidé par un humain qui connaît la vie en refuge.
               </p>
-              <ul className="mt-6 space-y-3 text-sm">
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-xs font-bold text-white">
-                    1
-                  </span>
-                  Tableaux de bord d\u00E9di\u00E9s aux soins, adoptions, suivis v\u00E9t\u00E9rinaires et contrats de familles d'accueil.
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/register"
+                  className="inline-flex items-center justify-center rounded-full bg-slate-900 px-7 py-3 text-base font-semibold text-white shadow transition-transform hover:-translate-y-0.5 hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-500 focus-visible:ring-offset-2"
+                >
+                  Réserver une démo guidée
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center rounded-full border border-slate-300 px-7 py-3 text-base font-semibold text-slate-700 transition-colors hover:border-slate-400 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300 focus-visible:ring-offset-2"
+                >
+                  Nous écrire
+                </Link>
+              </div>
+            </div>
+            <div className="rounded-3xl bg-white/80 p-6 text-sm text-slate-700 shadow">
+              <p className="font-semibold text-slate-900">Votre checklist de démarrage</p>
+              <ul className="mt-3 space-y-2">
+                <li className="flex items-center gap-2">
+                  <span aria-hidden="true">🧭</span>
+                  Rendez-vous visio pour comprendre votre fonctionnement.
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-xs font-bold text-white">
-                    2
-                  </span>
-                  Parcours d'entr\u00E9e pour vos b\u00E9n\u00E9voles avec rappels automatis\u00E9s de formation et de planning.
+                <li className="flex items-center gap-2">
+                  <span aria-hidden="true">📦</span>
+                  Import de vos animaux, familles et budgets existants.
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-xs font-bold text-white">
-                    3
-                  </span>
-                  Support humain en 24 h et base de connaissances d\u00E9di\u00E9e aux obligations l\u00E9gales des associations animales.
+                <li className="flex items-center gap-2">
+                  <span aria-hidden="true">🎉</span>
+                  Ateliers d'onboarding pour vos bénévoles et familles d'accueil.
                 </li>
               </ul>
             </div>
-            <aside className="rounded-2xl bg-emerald-800/60 p-6 shadow-lg">
-              <p className="text-sm uppercase tracking-wide text-emerald-200">\u00C9tude de cas</p>
-              <p className="mt-3 text-lg font-semibold text-white">
-                \u00AB Gr\u00E2ce \u00E0 AnimAdmin, nous suivons 280 animaux en simultan\u00E9 et chaque adoption reste transparente pour nos donateurs. \u00BB
-              </p>
-              <p className="mt-4 text-sm text-emerald-100">
-                L\u00E9a, pr\u00E9sidente de l'association Sauvetage F\u00E9lins Bretagne.
-              </p>
-            </aside>
           </div>
         </section>
       </main>
 
-      <footer className="relative z-10 border-t border-emerald-200/60 bg-white/80 px-6 py-6 text-sm text-slate-600 backdrop-blur sm:px-10">
-        <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p>{"\u00A9"} {new Date().getFullYear()} AnimAdmin. Tous droits r\u00E9serv\u00E9s.</p>
+      <footer className="border-t border-orange-100/70 bg-white/80 px-6 py-8 text-sm text-slate-500 backdrop-blur sm:px-10">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} AnimAdmin — un refuge plus humain, un animal plus serein.</p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <Link href="/accessibilite" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
-              D\u00E9claration d'accessibilit\u00E9
+            <Link href="/accessibilite" className="hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2">
+              Accessibilité
             </Link>
-            <Link href="/confidentialite" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
-              Confidentialit\u00E9
+            <Link href="/confidentialite" className="hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2">
+              Confidentialité
             </Link>
-            <Link href="/contact" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
+            <Link href="/contact" className="hover:text-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-300 focus-visible:ring-offset-2">
               Contact
             </Link>
           </div>
