@@ -5,19 +5,19 @@ const features = [
     icon: "paw" as const,
     title: "Suivi des animaux recueillis",
     description:
-      "Centralisez les fiches d'accueil, les soins v\u00E9t\u00E9rinaires et les d\u00E9marches d'adoption pour chaque prot\u00E9g\u00E9.",
+      "Centralisez les fiches d'accueil, les soins v?t?rinaires et les d?marches d'adoption pour chaque prot?g?.",
   },
   {
     icon: "shield" as const,
-    title: "Protection des donn\u00E9es",
+    title: "Protection des donn?es",
     description:
-      "Des autorisations fines et un h\u00E9bergement s\u00E9curis\u00E9 en Europe pour respecter les adh\u00E9rents et les adoptants.",
+      "Des autorisations fines et un h?bergement s?curis? en Europe pour respecter les adh?rents et les adoptants.",
   },
   {
     icon: "compass" as const,
-    title: "Organisation des b\u00E9n\u00E9voles",
+    title: "Organisation des b?n?voles",
     description:
-      "Planifiez les tourn\u00E9es de sauvetage, les permanences de refuge et les \u00E9v\u00E9nements de sensibilisation en quelques clics.",
+      "Planifiez les tourn?es de sauvetage, les permanences de refuge et les ?v?nements de sensibilisation en quelques clics.",
   },
 ];
 
@@ -145,7 +145,7 @@ export default function Home() {
         </div>
         <nav aria-label="Navigation principale" className="hidden items-center gap-6 text-sm font-medium text-emerald-950 md:flex">
           <Link href="#solutions" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
-            Fonctionnalit\u00E9s
+            Fonctionnalit?s
           </Link>
           <Link href="#impact" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
             Impact
@@ -160,23 +160,24 @@ export default function Home() {
         <section className="max-w-3xl" aria-labelledby="hero-title">
           <p className="mb-6 inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1 text-sm font-semibold text-emerald-900 shadow-sm">
             <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true" />
-            Pens\u00E9 avec des refuges et sanctuaires partenaires
+            Pens? avec des refuges et sanctuaires partenaires
           </p>
           <h1
             id="hero-title"
             className="text-4xl font-semibold leading-tight tracking-tight text-emerald-950 sm:text-5xl lg:text-6xl"
           >
-            Administrez votre association de protection animale en toute s\u00E9r\u00E9nit\u00E9.
+            Administrez votre association de protection animale en toute s?r?nit?.
           </h1>
           <p className="mt-6 text-lg leading-relaxed text-slate-700 sm:text-xl">
-            AnimAdmin centralise vos sauvetages, vos familles d'accueil et vos campagnes de dons. Une interface accessible qui lib\u00E8re du temps pour ce qui compte : le bien-\u00EAtre des animaux et l'accompagnement des b\u00E9n\u00E9voles.
+            AnimAdmin centralise vos sauvetages, vos familles d'accueil et vos campagnes de dons. Une interface accessible qui lib?re du temps pour ce qui compte : le bien-?tre des animaux et l'accompagnement des b?n?voles.
           </p>
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <Link
               href="/demo"
+              aria-label="Demander une d?monstration d'AnimAdmin"
               className="inline-flex items-center justify-center rounded-full bg-emerald-700 px-8 py-3 text-base font-semibold text-white shadow transition-colors hover:bg-emerald-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2"
             >
-              Demander une d\u00E9mo
+              Demander une d?mo
             </Link>
             <Link
               href="/login"
@@ -191,11 +192,11 @@ export default function Home() {
               <dd className="mt-1 text-2xl font-semibold text-emerald-950">320+</dd>
             </div>
             <div className="rounded-2xl bg-white/80 p-4 shadow-sm backdrop-blur">
-              <dt className="text-sm text-emerald-900/70">B\u00E9n\u00E9voles coordonn\u00E9s</dt>
+              <dt className="text-sm text-emerald-900/70">B?n?voles coordonn?s</dt>
               <dd className="mt-1 text-2xl font-semibold text-emerald-950">150+</dd>
             </div>
             <div className="rounded-2xl bg-white/80 p-4 shadow-sm backdrop-blur">
-              <dt className="text-sm text-emerald-900/70">Temps gagn\u00E9 / semaine</dt>
+              <dt className="text-sm text-emerald-900/70">Temps gagn? / semaine</dt>
               <dd className="mt-1 text-2xl font-semibold text-emerald-950">12 h</dd>
             </div>
           </dl>
@@ -204,13 +205,13 @@ export default function Home() {
         <section id="solutions" aria-labelledby="features-title" className="rounded-3xl bg-white/80 px-6 py-10 shadow-lg backdrop-blur sm:px-10">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">Fonctionnalit\u00E9s cl\u00E9s</p>
+              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">Fonctionnalit?s cl?s</p>
               <h2 id="features-title" className="mt-2 text-3xl font-semibold text-emerald-950">
-                Des outils pens\u00E9s pour vos prot\u00E9g\u00E9s et vos \u00E9quipes
+                Des outils pens?s pour vos prot?g?s et vos ?quipes
               </h2>
             </div>
             <p className="max-w-md text-sm text-slate-700">
-              AnimAdmin r\u00E9unit le suivi des animaux, la gestion des b\u00E9n\u00E9voles et la collecte de dons pour faire grandir votre association sans perdre en rigueur.
+              AnimAdmin r?unit le suivi des animaux, la gestion des b?n?voles et la collecte de dons pour faire grandir votre association sans perdre en rigueur.
             </p>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -229,38 +230,38 @@ export default function Home() {
         <section id="impact" aria-labelledby="engagement-title" className="rounded-3xl bg-emerald-900 px-6 py-12 text-emerald-50 shadow-xl sm:px-10">
           <div className="grid gap-8 lg:grid-cols-[2fr,1fr] lg:items-center">
             <div>
-              <h2 id="engagement-title" className="text-3xl font-semibold">Notre engagement bien-\u00EAtre animal</h2>
+              <h2 id="engagement-title" className="text-3xl font-semibold">Notre engagement bien-?tre animal</h2>
               <p className="mt-4 text-base leading-relaxed text-emerald-100">
-                AnimAdmin est co-construit avec des refuges partenaires. Nous privil\u00E9gions la transparence, la tra\u00E7abilit\u00E9 des soins et l'accessibilit\u00E9 num\u00E9rique pour soutenir chaque membre de votre association.
+                AnimAdmin est co-construit avec des refuges partenaires. Nous privil?gions la transparence, la tra?abilit? des soins et l'accessibilit? num?rique pour soutenir chaque membre de votre association.
               </p>
               <ul className="mt-6 space-y-3 text-sm">
                 <li className="flex items-start gap-3">
                   <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-xs font-bold text-white">
                     1
                   </span>
-                  Tableaux de bord d\u00E9di\u00E9s aux soins, adoptions, suivis v\u00E9t\u00E9rinaires et contrats de familles d'accueil.
+                  Tableaux de bord d?di?s aux soins, adoptions, suivis v?t?rinaires et contrats de familles d'accueil.
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-xs font-bold text-white">
                     2
                   </span>
-                  Parcours d'entr\u00E9e pour vos b\u00E9n\u00E9voles avec rappels automatis\u00E9s de formation et de planning.
+                  Parcours d'entr?e pour vos b?n?voles avec rappels automatis?s de formation et de planning.
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="mt-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600 text-xs font-bold text-white">
                     3
                   </span>
-                  Support humain en 24 h et base de connaissances d\u00E9di\u00E9e aux obligations l\u00E9gales des associations animales.
+                  Support humain en 24 h et base de connaissances d?di?e aux obligations l?gales des associations animales.
                 </li>
               </ul>
             </div>
             <aside className="rounded-2xl bg-emerald-800/60 p-6 shadow-lg">
-              <p className="text-sm uppercase tracking-wide text-emerald-200">\u00C9tude de cas</p>
+              <p className="text-sm uppercase tracking-wide text-emerald-200">?tude de cas</p>
               <p className="mt-3 text-lg font-semibold text-white">
-                \u00AB Gr\u00E2ce \u00E0 AnimAdmin, nous suivons 280 animaux en simultan\u00E9 et chaque adoption reste transparente pour nos donateurs. \u00BB
+                ? Gr?ce ? AnimAdmin, nous suivons 280 animaux en simultan? et chaque adoption reste transparente pour nos donateurs. ?
               </p>
               <p className="mt-4 text-sm text-emerald-100">
-                L\u00E9a, pr\u00E9sidente de l'association Sauvetage F\u00E9lins Bretagne.
+                L?a, pr?sidente de l'association Sauvetage F?lins Bretagne.
               </p>
             </aside>
           </div>
@@ -269,13 +270,13 @@ export default function Home() {
 
       <footer className="relative z-10 border-t border-emerald-200/60 bg-white/80 px-6 py-6 text-sm text-slate-600 backdrop-blur sm:px-10">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p>{"\u00A9"} {new Date().getFullYear()} AnimAdmin. Tous droits r\u00E9serv\u00E9s.</p>
+          <p>? {new Date().getFullYear()} AnimAdmin. Tous droits r?serv?s.</p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
             <Link href="/accessibilite" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
-              D\u00E9claration d'accessibilit\u00E9
+              D?claration d'accessibilit?
             </Link>
             <Link href="/confidentialite" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
-              Confidentialit\u00E9
+              Confidentialit?
             </Link>
             <Link href="/contact" className="transition-colors hover:text-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600 focus-visible:ring-offset-2">
               Contact
