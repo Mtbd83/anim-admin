@@ -5,7 +5,7 @@ const baseSchema = z.object({
   DATABASE_URL: z
     .string()
     .trim()
-    .default("postgres://animal-admin:animal-admin@localhost:5557/animal-admin"),
+    .default("postgres://animal-admin:animal-admin@localhost:5557/animaladmin"),
   BETTER_AUTH_SECRET: z
     .string()
     .min(32, "BETTER_AUTH_SECRET must be at least 32 characters long"),
