@@ -2,7 +2,10 @@ import { z } from "zod";
 
 const baseSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
-  DATABASE_URL: z.string().trim().default("file:./.data/local.db"),
+  DATABASE_URL: z
+    .string()
+    .trim()
+    .default("postgres://postgres:postgres@localhost:5432/app"),
   BETTER_AUTH_SECRET: z
     .string()
     .min(32, "BETTER_AUTH_SECRET must be at least 32 characters long"),

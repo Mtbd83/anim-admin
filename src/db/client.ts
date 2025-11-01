@@ -1,26 +1,18 @@
-import Database from "better-sqlite3";
-import { mkdirSync } from "node:fs";
-import { dirname, resolve } from "node:path";
-import { drizzle } from "drizzle-orm/better-sqlite3";
+import { drizzle } from "drizzle-orm/node-postgres";
+import { Pool } from "pg";
 
 import { env } from "@/env";
 import * as schema from "@/db/schema";
 
-const normalizedUrl = env.DATABASE_URL.startsWith("file:")
-  ? env.DATABASE_URL.slice("file:".length)
-  : env.DATABASE_URL;
+const pool = new Pool({
+  connectionString: env.DATABASE_URL,
+  ssl:
+    env.DATABASE_URL.includes("localhost") || env.DATABASE_URL.includes("127.0.0.1")
+      ? false
+      : { rejectUnauthorized: false },
+});
 
-const resolvedPath = normalizedUrl.startsWith(":")
-  ? normalizedUrl
-  : resolve(process.cwd(), normalizedUrl);
-
-if (!resolvedPath.startsWith(":")) {
-  mkdirSync(dirname(resolvedPath), { recursive: true });
-}
-
-const sqlite = new Database(resolvedPath);
-
-export const db = drizzle(sqlite, { schema });
+export const db = drizzle(pool, { schema });
 export type DbClient = typeof db;
 
-export { schema };
+export { schema, pool };
