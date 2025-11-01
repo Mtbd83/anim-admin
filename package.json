@@ -13,8 +13,8 @@
     "db:migrate": "npx drizzle-kit migrate",
     "db:up": "docker compose up -d",
     "db:down": "docker compose down",
-    "db:create": "docker exec -it animal-admin-postgres psql -U animal-admin -d postgres -c \"CREATE DATABASE animal-admin;\"",
-    "db:drop": "docker exec -it animal-admin-postgres psql -U animal-admin -d postgres -c \"DROP DATABASE IF EXISTS animal-admin;\""
+    "db:create": "docker exec -it animal-postgres psql -U animal-admin -d postgres -c \"CREATE DATABASE animaladmin;\"",
+    "db:drop": "docker exec -it animal-postgres psql -U animal-admin -d postgres -c \"DROP DATABASE IF EXISTS animaladmin;\""
   },
   "dependencies": {
     "better-auth": "^1.3.34",
